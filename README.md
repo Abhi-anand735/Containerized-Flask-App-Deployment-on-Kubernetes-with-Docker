@@ -33,36 +33,47 @@ Prerequisites:
 Installation:
 
  - Clone Repository:
+ - 
    git clone https://github.com/Abhi-anand735/Containerized-Flask-App-Deployment-on-Kubernetes-with-            Docker.git
 
  - Build Docker Image:
+ - 
     docker build -t flask-k8s .
 
  - Run Docker Container:
+ - 
     docker run -d -p 5000:5000 flask-k8s
 
  - Docker Image tag:
+ - 
     docker tag flask-k8s:latest abhianand77/flask-k8s:v1.0
 
  - push docker image:
+ - 
     docker push abhianand77/flask-k8s:v1.0
 
  - Kubernetes Deployment:
+ - 
     minikube start
 
  - Create Namespace:
+ - 
     kubectl apply -f kubernetes/namespace.yaml 
 
  - create deployment:
+ - 
     kubectl apply -f kubernetes/deployment.yaml -n flask-app
    
  - create service:
+ - 
     kubectl apply -f kubernetes/service.yaml -n flask-app
 
- - verify deployment: 
+ - verify deployment:
+ -  
     kubectl get deployments -n flask-app
 
  - scale deployment:
+ - 
     kubectl scale deployment/flask-deployment --replicas=5 -n flask-app
    
  - Access Application:
