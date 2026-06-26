@@ -10,44 +10,53 @@ Project Architecture:
 
 Tech stack used in this project:
 
-.Python (Backend Application)
-.Flask (Web Framework)
-.Docker	Containerization)
-.Docker Hub	(Image Registry)
-.Kubernetes	(Container Orchestration)
-.Minikube	(Local Kubernetes Cluster)
-.kubectl	(Kubernetes CLI)
-.Git	(Version Control)
-.GitHub	(Source Code Repository)
-.YAML (Kubernetes Configuration)
+- Python (Backend Application)
+- Flask (Web Framework)
+- Docker	Containerization)
+- Docker Hub	(Image Registry)
+- Kubernetes	(Container Orchestration)
+- Minikube	(Local Kubernetes Cluster)
+- kubectl	(Kubernetes CLI)
+- Git	(Version Control)
+- GitHub	(Source Code Repository)
+- YAML (Kubernetes Configuration)
 
 Prerequisites:
 
-Python 3.12+
-Docker Desktop
-Docker Hub Account
-Minikube
-kubectl
-Git
+- Python 3.12+
+- Docker Desktop
+- Docker Hub Account
+- Minikube
+- kubectl
+- Git
 
 Installation:
 
-Clone Repository
-
+ Clone Repository
+  git clone https://github.com/Abhi-anand735/Containerized-Flask-App-Deployment-on-Kubernetes-with-            Docker.git
 
  Build Docker Image
-
+  docker build -t 
 
  Run Docker Container
-
+  docker run -p 5000:5000
 
  Push Docker Image
 
 
  Kubernetes Deployment
- minikube start
+  minikube start
 
  Create Namespace
-kubectl apply -f kubernetes/namespace.yaml
+  kubectl apply -f namespace.yaml -n flask-app
+
+ create deployment
+  kubectl apply -f deployment.yaml -n flask-app
+
+ verify deployment 
+  kubectl get deployment -n flask-app
+
+ Access Application
+  minikube service flask-service -n flask-app
 
 
