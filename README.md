@@ -4,6 +4,13 @@ Project Overview:
 
 This project demonstrates how to build containerize and deploy a Python Flask web application using Docker and Kubernetes. The application is packaged into a Docker image, pushed to Docker Hub, and deployed on a local Kubernetes cluster using Minikube. The project also demonstrates Kubernetes concepts such as Deployments, Services, ConfigMaps, Namespaces, and Horizontal Pod Autoscaling (HPA),rolling update deployment, rollback.
 
+Core Features:
+
+- Supported rolling updates for zero or minimal downtime during deployments
+- Configured multiple Pod replicas for high availability
+- Implemented Horizontal Pod Autoscaler (HPA) for automatic scaling based on CPU utilization
+
+
 Project Architecture:
 
 ![image alt](https://github.com/Abhi-anand735/Containerized-Flask-App-Deployment-on-Kubernetes-with-Docker/blob/526ebae5851c3574e5e75f79c88cec03b43fde4d/architecture.png)
@@ -32,75 +39,58 @@ Prerequisites:
 
 Installation:
 
- - Clone Repository
+ - Verify Git installation
    ```bash
-   'git clone https://github.com/Abhi-anand735/Containerized-Flask-App-Deployment-on-Kubernetes-with-            Docker.git
+   git --version 
    ```
 
- - Build Docker Image
+ - Verify Python version
    ```bash
-    docker build -t flask-k8s .
+    python --version
    ```
 
- - Run Docker Container
+ - Install Docker
    ```bash 
-    docker run -d -p 5000:5000 flask-k8s
+   sudo apt install docker.io
    ```
 
- - Docker Image tag
+ - Install kubectl
    ```bash
-    docker tag flask-k8s:latest abhianand77/flask-k8s:v1.0
+   kubectl version --client
    ```
 
- - push docker image
+ - Install Minikube
    ```bash
-       docker push abhianand77/flask-k8s:v1.0
+   minikube version
    ```
 
- - Kubernetes cluster
-     ```bashminikube start
-     ```
+ - Start Minikube
+   ```bash
+   minikube start --driver=docker
+   ```
 
- - Create Namespace
-```bash
-     kubectl apply -f kubernetes/namespace.yaml
-```
+ - Verify Kubernetes Cluster
+    ```bash
+    kubectl get nodes 
+    ```
 
- - create deployment
-```bash
-     kubectl apply -f kubernetes/deployment.yaml -n flask-app
-```
+ - Enable Metrics Server (Required for HPA)
+   ```bash
+   minikube addons enable metrics-server  
+   ```
    
- - create service
- ```bash
-   kubectl apply -f kubernetes/service.yaml -n flask-app
+ - Clone the Repository
+   ```bash
+   
    ```
+Challenges faced:
 
- - verify deployment
-   ```bash
-    kubectl get deployments -n flask-app
-   ```
-
- - scale deployment
-  ```bash
-    kubectl scale deployment/flask-deployment --replicas=5 -n flask-app
-   ```
- - Rolling update
-   ```bash
-     docker build -t flask-app:v2 .
-   ```
-  ```bash
-    docker tag flask-app:v2 abhiananad77/flask-app:v3
-  ```
-  ```bash
-    docker push abhianand77/flask-app:v3
-  ```
-  ```bash
-    kubectl set image deployment/flask-deployment \ flask-container=abhianand77/flask-app:v3 \ -  n flask-      app
-  ```  
- - Access Application
-   ```bash
-    minikube service flask-service -n flask-app
-   ```
+- Fixing port conflicts when port 5000 was already in use
+- Troubleshooting Pod failures such as CrashLoopBackOff and ImagePullBackOff
+- Managing Docker image tags and versioning.
+  
+ 
+   
+    
 
 
