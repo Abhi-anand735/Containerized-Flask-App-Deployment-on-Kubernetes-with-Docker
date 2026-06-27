@@ -88,6 +88,12 @@ Challenges faced:
 - Fixing port conflicts when port 5000 was already in use
 - Troubleshooting Pod failures such as CrashLoopBackOff and ImagePullBackOff
 - Managing Docker image tags and versioning.
+
+Future enhancements:
+
+- Setup with jenkins/github action pipeline
+- Deploy the application on cloud platforms (AZURE, AWS, GCP)
+- Implement the Infrastructre as a code (Terraform, Ansible)
   
  
    
