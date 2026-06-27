@@ -4,7 +4,7 @@
   Exiting due to DRIVER_NOT_FOUND.
   * Cause:
   Docker Desktop is not running,
-  Minikube driver is not configured,
+  Minikube driver is not configured.
   * debug:
     ```bash
     minikube start --driver=docker
@@ -13,7 +13,7 @@
   
   * Cause:
     Insufficient CPU or memory,
-    Node scheduling issue,
+    Node scheduling issue.
   * debug:
     ```bash
     kubectl describe pod flask-deployment-74c49c48d6-c9g87 -n flask-app
@@ -22,7 +22,7 @@
   
   * Cause:
     Missing environment variables,
-    Missing dependencies,
+    Missing dependencies.
   * debug:
     ```bash
     kubectl logs flask-deployment-74c49c48d6-c9g87 -n flask-app
@@ -32,7 +32,7 @@
   * Cause:
     Docker image not pushed,
     Incorrect image name,
-    Wrong image tag,
+    Wrong image tag.
   * debug:
     ```bash
     kubectl describe pod flask-deployment-74c49c48d6-c9g87 -n flask-app
