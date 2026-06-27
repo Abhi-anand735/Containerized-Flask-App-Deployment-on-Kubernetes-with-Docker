@@ -1,11 +1,11 @@
 - Minikube Does Not Start
   
-  Error:
+  -Error:
   Exiting due to DRIVER_NOT_FOUND
-  Cause:
+  -Cause:
   Docker Desktop is not running.
   Minikube driver is not configured
-  debug:
-  ```bash
-  minikube start --driver=docker
-  ```
+  -debug:
+   ```bash
+   minikube start --driver=docker
+   ```
